@@ -15,6 +15,7 @@ use App\Http\Controllers\StudentController;
 |
 */
 Route::apiResource('students', StudentController::class);
+Route::get('/student/search', 'StudentController@search');
 Route::middleware(['auth:api'])->group(function () {
     
 });

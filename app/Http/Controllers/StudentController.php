@@ -33,6 +33,16 @@ class StudentController extends Controller
         return StudentResource::collection($students);
     }
 
+    public function search(Request $request)
+    {
+    $query = $request->input('query');
+
+    $students = Student::where('name', 'like', "%$query%")
+                       ->orWhere('email', 'like', "%$query%")
+                       ->get();
+
+    return $students;
+    }
     public function show($id)
     {
         return StudentResource::find($id);
