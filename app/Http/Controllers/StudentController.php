@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\StudentResource;
 use Illuminate\Http\Request;
 use App\Models\Student;
@@ -43,9 +44,9 @@ class StudentController extends Controller
 
     return $students;
     }
-    public function show($id)
+    public function show(Student $student)
     {
-        return StudentResource::find($id);
+        return StudentResource::make($student);
     }
 
     public function store(Request $request)
