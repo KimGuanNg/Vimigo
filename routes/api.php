@@ -14,10 +14,11 @@ use App\Http\Controllers\StudentController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::resource('students', StudentController::class);
 Route::middleware(['auth:api'])->group(function () {
-    Route::resource('students', StudentController::class);
+    
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
