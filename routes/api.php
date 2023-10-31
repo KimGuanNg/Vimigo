@@ -14,7 +14,7 @@ use App\Http\Controllers\StudentController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::resource('students', StudentController::class);
+Route::apiResource('students', StudentController::class);
 Route::middleware(['auth:api'])->group(function () {
     
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StudentResource;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use Maatwebsite\Excel\Facades\Excel;
@@ -28,22 +29,23 @@ class StudentController extends Controller
     
     public function index()
     {
-        return Student::paginate(10);
+        $students = Student::paginate(10);
+        return StudentResource::collection($students);
     }
 
     public function show($id)
     {
-        return Student::find($id);
+        return StudentResource::find($id);
     }
 
     public function store(Request $request)
     {
-        return Student::create($request->all());
+        return StudentResource::create($request->all());
     }
 
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
+        $student = StudentResource::find($id);
         $student->update($request->all());
         return $student;
     }
